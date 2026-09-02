@@ -2,6 +2,7 @@ print("Hello, World!")
 print("Hello", "hi", "greetings")
 print("HELLO MY NAME IS JAYASURYA")
 
+#variable declaration
 # dynamic typing
 name = "Jayasurya"
 print(type(name))
