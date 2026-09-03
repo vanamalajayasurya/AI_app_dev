@@ -53,3 +53,13 @@ print(a - b)
 print(a*b)
 print(a/b)
 print(a%b)
+
+#dictionary operations
+
+distanory = {
+    "jayasurya" : "HE PLAYS CRICKET"
+    ,
+    "surya" : "HE PLAYS FOOTBALL"
+}
+
+print(distanory["jayasurya"]) 
