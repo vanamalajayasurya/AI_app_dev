@@ -1,3 +1,9 @@
+![1](image.png)
+![2](image-1.png)
+![3](image-2.png)
+![4](image-3.png)
+![5](image-4.png)git pull origin main
+
 # Day 1 - Python Fundamentals
 
 This project contains my Day 1 Python practice as part of my AI & Python learning journey.
@@ -185,3 +191,271 @@ print(a % b)
 * Practiced **basic arithmetic operators**: `+`, `-`, `*`, `/`, `%`.
 
 **Day 2 completed. 🚀**
+
+# Day 3 - Python Practice (README.md)
+
+## 📚 Topics Covered
+
+Today I practiced **Lists, Tuples, Dictionaries, Arithmetic Operators, Tax Calculator, and Restaurant Bill Calculator** in Python.
+
+---
+
+# 1. List Practice (`practice.py`)
+
+## Code
+
+```python
+fruits = ["apple", "banana", "orange", "grape", "kiwi"]
+
+print(fruits)
+print(type(fruits))
+print(fruits[0])
+print(fruits[4])
+
+fruits[2] = "mango"
+
+print(fruits)
+```
+
+## Output
+
+```text
+['apple', 'banana', 'orange', 'grape', 'kiwi']
+<class 'list'>
+apple
+kiwi
+['apple', 'banana', 'mango', 'grape', 'kiwi']
+```
+
+## What I Learned
+
+* Lists use `[]`.
+* Lists are mutable (values can be changed).
+* Index starts from `0`.
+
+---
+
+# 2. Tuple Practice (`practice.py`)
+
+## Code
+
+```python
+Names = ("jayasurya", "nikhil", "charan", "teja", "manoj")
+
+print(Names[1])
+print(type(Names))
+
+Names = list(Names)
+Names[1] = "monu"
+
+print(Names)
+print(type(Names))
+```
+
+## Output
+
+```text
+nikhil
+<class 'tuple'>
+['jayasurya', 'monu', 'charan', 'teja', 'manoj']
+<class 'list'>
+```
+
+## What I Learned
+
+* Tuples use `()`.
+* Tuples are immutable.
+* Convert a tuple to a list using `list()` to modify values.
+
+---
+
+# 3. Dictionary Practice (`practice.py`)
+
+## Code
+
+```python
+student = {
+    "name": "Jayasurya",
+    "age": 22,
+    "city": "Hyderabad",
+    "is_student": True
+}
+
+print(student["name"])
+print(student["city"])
+
+student["weight"] = 70.5
+
+print(student)
+```
+
+## Output
+
+```text
+Jayasurya
+Hyderabad
+{'name': 'Jayasurya', 'age': 22, 'city': 'Hyderabad', 'is_student': True, 'weight': 70.5}
+```
+
+## What I Learned
+
+* Dictionaries use `{}`.
+* Data is stored as `key : value`.
+* New values can be added using a new key.
+
+---
+
+# 4. Arithmetic Operators (`practice.py`)
+
+## Code
+
+```python
+a = 20
+b = 6
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a % b)
+print(a ** b)
+print(a // b)
+```
+
+## Output
+
+```text
+26
+14
+120
+3.3333333333333335
+2
+64000000
+3
+```
+
+## What I Learned
+
+| Operator | Meaning        |
+| -------- | -------------- |
+| `+`      | Addition       |
+| `-`      | Subtraction    |
+| `*`      | Multiplication |
+| `/`      | Division       |
+| `%`      | Remainder      |
+| `//`     | Floor Division |
+| `**`     | Power          |
+
+---
+
+# 5. Tax Calculator (`calculator.py`)
+
+## Code
+
+```python
+print("======= calculator.py =======")
+
+itemprice = float(input("Enter the item price: $"))
+quantity = int(input("Enter the quantity: "))
+tax = float(input("Enter the tax percentage: "))
+
+totalprice = itemprice * quantity
+print("Total price before tax:", totalprice)
+
+taxamount = totalprice * (tax / 100)
+print("Tax amount:", taxamount)
+
+print("Total price after tax:", totalprice + taxamount)
+
+print("======= calculator.py =======")
+```
+
+## Example Output
+
+```text
+======= calculator.py =======
+Enter the item price: $100
+Enter the quantity: 2
+Enter the tax percentage: 5
+
+Total price before tax: 200.0
+Tax amount: 10.0
+Total price after tax: 210.0
+======= calculator.py =======
+```
+
+## What I Learned
+
+* Used `input()` to get user input.
+* Used `float()` and `int()` for type conversion.
+* Calculated tax and final amount.
+
+---
+
+# 6. Restaurant Bill Calculator (`Restaurant Bill Calculator.py`)
+
+## Code
+
+```python
+print("======= Restaurant Bill Calculator =======")
+
+print("Enter the food price: ₹")
+food_price = float(input())
+
+print("Enter the number of items:")
+number_of_items = int(input())
+
+print("Enter the GST percentage:")
+gst_percentage = float(input())
+
+total_price = food_price * number_of_items
+
+gst_amount = total_price * (gst_percentage / 100)
+
+print("GST Amount: ₹", gst_amount)
+
+print("Total Price: ₹", total_price + gst_amount)
+```
+
+## Example Output
+
+```text
+======= Restaurant Bill Calculator =======
+Enter the food price: ₹250
+Enter the number of items: 3
+Enter the GST percentage: 5
+
+GST Amount: ₹37.5
+Total Price: ₹787.5
+```
+
+## What I Learned
+
+* Calculated restaurant bill using GST.
+* Used user input and arithmetic operations.
+* Printed the final bill amount.
+
+---
+
+# ✅ Day 3 Summary
+
+Today I practiced:
+
+* Lists and updating values.
+* Tuples and converting them to lists.
+* Dictionaries and adding new key-value pairs.
+* Arithmetic operators (`+`, `-`, `*`, `/`, `%`, `//`, `**`).
+* Built a Tax Calculator project.
+* Built a Restaurant Bill Calculator project.
+
+## 📂 Files Used
+
+* `AI_python_foundations/practice.py`
+* `AI_python_foundations/calculator.py`
+* `AI_python_foundations/Restaurant Bill Calculator.py`
+
+## 👨‍💻 Author
+
+**Vanamala Jayasurya**
+
+## 🚀 Day 3 Completed
