@@ -1,0 +1,10 @@
+print("=======calculator.py=======")
+itemprice =float(input("Enter the item price: $"))
+quantity = int(input("Enter the quantity: $"))
+tax = float(input("Enter the tax percentage: $"))
+totalprice = itemprice * quantity
+print("Total price before tax: ", totalprice)
+taxamount = totalprice * (tax / 100)
+print("Tax amount:$", taxamount)
+print("Total price after tax: $", totalprice + taxamount)
+print("=======calculator.py=======")

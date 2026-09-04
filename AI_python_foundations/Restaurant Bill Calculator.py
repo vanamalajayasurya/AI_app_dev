@@ -1,0 +1,11 @@
+print("======= Restaurant Bill Calculator =======")
+print("enter the food price: ₹ ")
+food_price = float(input())
+print ("enter the number of items: ")
+number_of_items = int(input())
+print ("enter the GST price: ₹ ")
+gst_percentage = float(input())
+total_price = food_price * number_of_items
+gst_amount = total_price * (gst_percentage / 100)
+print("GST Amount: ₹", gst_amount)
+print("Total Price: ₹", total_price + gst_amount)
