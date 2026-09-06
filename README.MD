@@ -459,3 +459,158 @@ Today I practiced:
 **Vanamala Jayasurya**
 
 ## 🚀 Day 3 Completed
+
+
+# 🚀 Day 4 – Python Data Structures & Debugging Challenge
+
+## 📚 Topics Covered
+
+* Lists
+* Tuples
+* Sets
+* Dictionaries
+* `for` loop
+* `if-else`
+* `break` statement
+* Debugging Python code
+
+---
+
+## 💻 Program 1 – First Non-Repeating Character (Using Dictionary)
+
+### Code
+
+```python
+def non_repeating_character(S):
+    count = {}
+
+    for ch in S:
+        if ch != " ":
+            count[ch] = count.get(ch, 0) + 1
+
+    for ch in S:
+        if ch != " " and count[ch] == 1:
+            return ch
+
+    return "No non-repeating character found"
+
+print("Enter a string:")
+S = input()
+
+print("The first non-repeating character is:", non_repeating_character(S))
+```
+
+### Output
+
+```text
+Enter a string:
+programming
+The first non-repeating character is: p
+
+Enter a string:
+aabbcdd
+The first non-repeating character is: c
+
+Enter a string:
+aabbcc
+The first non-repeating character is: No non-repeating character found
+```
+
+---
+
+## 💻 Program 2 – Student Search (Using `range(len(students))`)
+
+### Code
+
+```python
+students = ["Ravi", "Anil", "Kiran", "Suresh"]
+
+print("List of students:", students)
+
+for i in range(len(students)):
+    if students[i] == "Kiran":
+        print("Student found:", students[i])
+        break
+else:
+    print("Student not found")
+```
+
+### Output
+
+```text
+List of students: ['Ravi', 'Anil', 'Kiran', 'Suresh']
+Student found: Kiran
+```
+
+---
+
+## 💻 Program 3 – Student Search (Without `range(len(students))`)
+
+### Code
+
+```python
+students = ["Ravi", "Anil", "Kiran", "Suresh"]
+
+for student in students:
+    if student == "Kiran":
+        print("Student found:", student)
+        break
+else:
+    print("Student not found")
+```
+
+### Output
+
+```text
+Student found: Kiran
+```
+
+---
+
+## 🐞 Debugging Challenge
+
+### Original Problem Output
+
+```text
+Student not found
+Student not found
+Student found: Kiran
+Student not found
+```
+
+### Fixed Output
+
+```text
+List of students: ['Ravi', 'Anil', 'Kiran', 'Suresh']
+Student found: Kiran
+```
+
+---
+
+## 🎯 What I Learned Today
+
+* Difference between List, Tuple, Set, and Dictionary.
+* Searching an element in a list.
+* Using `break` to stop a loop.
+* Importance of indentation in Python.
+* Using dictionaries to solve problems efficiently.
+
+---
+
+## 💡 What I Found Difficult
+
+* Understanding the correct placement of `else`.
+* Using `break` in loops.
+* Solving the bonus challenge without `range(len(students))`.
+
+---
+
+## 📌 Day 4 Summary
+
+* Practiced Python Data Structures.
+* Solved the First Non-Repeating Character problem using a dictionary.
+* Learned debugging with `for`, `if-else`, and `break`.
+* Solved the Student Search problem with and without `range(len(students))`.
+
+**#100DaysOfCode #Python #Day4 #LearningPython #VSCode**
+
