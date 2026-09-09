@@ -614,3 +614,291 @@ Student found: Kiran
 
 **#100DaysOfCode #Python #Day4 #LearningPython #VSCode**
 
+Perfect. Don't replace your old README. Just copy and paste this below your existing Day 4. I kept the same style and format as your current README.
+
+# Day 5 – Conditional Statements & Loops 
+
+## 📚 Topics Covered
+
+Today I learned Conditional Statements, Nested If-Else, and Loops in Python.
+
+## 1. Conditional Operators (`conditional operators.py`)
+
+### Code
+
+Python
+
+Run
+
+```
+Number = int(input("Enter the number: "))
+
+if Number < 0:
+    print("Number is Negative")
+elif Number == 0:
+    print("Number is Zero")
+elif Number == 999:
+    print("Number is Special")
+else:
+    print("Number is Positive")
+```
+
+### What I Learned
+
+* Used `if`, `elif`, and `else`.
+
+* Checked different conditions.
+
+* Learned how Python executes conditions from top to bottom.
+
+## 2. Nested If-Else (`nestedifelse.py`)
+
+### Code
+
+Python
+
+Run
+
+```
+num = int(input("Enter the number: "))
+
+if num < 0:
+    print("Correct is number")
+elif num > 0:
+    if num <= 10:
+        print("Number between 1–10")
+    elif num <= 20:
+        print("Number between 11–20")
+    else:
+        print("Number is greater than 20")
+else:
+    print("Number is Zero")
+```
+
+### What I Learned
+
+* Learned nested `if` statements.
+
+* Checked number ranges using multiple conditions.
+
+* Understood decision making inside another condition.
+
+## 3. Loops (`loops.py`)
+
+### Code
+
+Python
+
+Run
+
+```
+for k in range(1, 10):
+    print(k + 20)
+```
+
+### What I Learned
+
+* Used `for` loops.
+
+* Learned `range(start, stop)`.
+
+* Repeated code using loops.
+
+## ✅ Day 5 Summary
+
+Today I practiced:
+
+* Conditional statements (`if`, `elif`, `else`).
+
+* Nested `if-else`.
+
+* `for` loops with `range()`.
+
+* Number checking and range checking programs.
+
+### 📂 Files Used
+
+* `AI_python_foundations/conditional operators.py`
+
+* `AI_python_foundations/nestedifelse.py`
+
+* `AI_python_foundations/loops.py`
+
+Day 5 Completed. 🚀
+
+# Day 6 – Object-Oriented Programming (README.md)
+
+## 📚 Topics Covered
+
+Today I started learning Object-Oriented Programming (OOP) in Python.
+
+## 1. Class (`oopsconcept.py`)
+
+### Code
+
+Python
+
+Run
+
+```
+class Student:
+    name = "Jayasurya"
+
+print("Hello, my name is", Student.name)
+```
+
+### What I Learned
+
+* A class is a blueprint for creating objects.
+
+* Stored data inside a class.
+
+## 2. Object (`object.py`)
+
+### Code
+
+Python
+
+Run
+
+```
+class Car:
+    brand = "Volkswagen"
+
+car1 = Car()
+
+print(car1.brand)
+```
+
+### What I Learned
+
+* Created an object from a class.
+
+* Accessed class attributes using an object.
+
+## 3. Encapsulation (`Encapsulation.py`)
+
+### Code
+
+Python
+
+Run
+
+```
+class Bank:
+    def __init__(self, balance):
+        self.__balance__ = "2000"
+
+    def show_balance(self):
+        print("Balance:", self.__balance__)
+```
+
+### What I Learned
+
+* Learned encapsulation.
+
+* Used private variables.
+
+* Updated balance using methods.
+
+## 4. Bank Account Practice (`bank.py`)
+
+### What I Learned
+
+* Created a bank account class.
+
+* Used constructor (`__init__`).
+
+* Practiced deposit and balance methods.
+
+## ✅ Day 6 Summary
+
+Today I practiced:
+
+* Classes and Objects.
+
+* Constructor (`__init__`).
+
+* Methods inside classes.
+
+* Encapsulation.
+
+* Bank Account example.
+
+### 📂 Files Used
+
+* `AI_python_foundations/oopsconcept.py`
+
+* `AI_python_foundations/object.py`
+
+* `AI_python_foundations/Encapsulation.py`
+
+* `AI_python_foundations/bank.py`
+
+Day 6 Completed. 🚀
+
+# Day 7 – Warehouse Management System (README.md)
+
+## 📚 Topics Covered
+
+Today I built my first mini Python project using Functions, Dictionary, and JSON File Handling.
+
+## 📦 Warehouse Management System (`Warehouse Management System.py`)
+
+### Features
+
+* Add Product
+
+* View Products
+
+* Search Product
+
+* Save Products into `warehouse.json`
+
+* Load Existing Products from `warehouse.json`
+
+### Concepts Used
+
+* Functions
+
+* Dictionary
+
+* User Input
+
+* JSON File Handling
+
+* File Read & Write
+
+### What I Learned
+
+* Stored product information in a dictionary.
+
+* Saved data permanently using JSON.
+
+* Loaded previous data from a JSON file.
+
+* Built a simple inventory management project.
+
+## ✅ Day 7 Summary
+
+Today I practiced:
+
+* Functions in Python.
+
+* Dictionary operations.
+
+* JSON file handling (`json.dump()` and `json.load()`).
+
+* Building a CRUD-style mini project.
+
+### 📂 Files Used
+
+* `AI_python_foundations/Warehouse Management System.py`
+
+* `AI_python_foundations/warehouse.json`
+
+Day 7 Completed. 🚀
+
+This matches the format of your existing README (Day 1–Day 4), so you can paste it directly underneath Day 4 in GitHub.
+
+
