@@ -900,23 +900,31 @@ Today I practiced:
 Day 7 Completed. 🚀
 
 
-🌦️ Day 8 – Python API Projects (README.md)
-📚 Topics Covered
+# 🌦️ Day 8 – Python API Projects (README.md)
 
-Today I learned how to use APIs in Python using the requests library. I built three real-world mini projects that fetch live data from the internet.
+## 📚 Topics Covered
 
-Weather App (OpenWeather API)
+Today I learned how to use APIs in Python using the `requests` library. I built three real-world mini projects that fetch live data from the internet.
 
-Movie Finder App (OMDb API)
+* Weather App (OpenWeather API)
 
-News Headlines App (NewsAPI)
+* Movie Finder App (OMDb API)
 
-1. Weather App (weather.py)
-📌 Project
+* News Headlines App (NewsAPI)
+
+# 1. Weather App (`weather.py`)
+
+## 📌 Project
 
 A Python application that fetches live weather information using the OpenWeather API. It asks the user for a city name and displays weather details.
 
-Code
+### Code
+
+Python
+
+Run
+
+```
 import requests
 
 API_KEY = "YOUR_API_KEY"
@@ -950,7 +958,11 @@ if response.status_code == 200:
 
 else:
     print("❌ Error:", data["message"])
-Example Output
+```
+
+### Example Output
+
+```
 🌦️ Weather App
 ------------------------------
 Enter city name: Hyderabad
@@ -962,22 +974,31 @@ City        : Hyderabad, IN
 📝 Description : scattered clouds
 💧 Humidity    : 68%
 💨 Wind Speed  : 4.2 m/s
-What I Learned
+```
 
-Used the requests library.
+### What I Learned
 
-Connected Python with an API.
+* Used the `requests` library.
 
-Read JSON data.
+* Connected Python with an API.
 
-Used if-else for API error handling.
+* Read JSON data.
 
-2. Movie Finder App (Movie Finder.py)
-📌 Project
+* Used `if-else` for API error handling.
+
+# 2. Movie Finder App (`Movie Finder.py`)
+
+## 📌 Project
 
 A Python application that finds movie details using the OMDb API.
 
-Code
+### Code
+
+Python
+
+Run
+
+```
 import requests
 
 api_key = "YOUR_API_KEY"
@@ -996,27 +1017,40 @@ if data["Response"] == "True":
     print("Rating:", data["imdbRating"])
 else:
     print("❌ Movie Not Found.")
-Example Output
+```
+
+### Example Output
+
+```
 Enter Movie Name: Pushpa
 
 🎬 Movie Details
 Title : Pushpa
 Year  : 2021
 Rating: 7.6
-What I Learned
+```
 
-Used API keys in Python.
+### What I Learned
 
-Retrieved movie information from an API.
+* Used API keys in Python.
 
-Displayed data using dictionary keys.
+* Retrieved movie information from an API.
 
-3. News Headlines App (News Headlines App.py)
-📌 Project
+* Displayed data using dictionary keys.
+
+# 3. News Headlines App (`News Headlines App.py`)
+
+## 📌 Project
 
 A Python application that fetches the latest news headlines using NewsAPI.
 
-Code
+### Code
+
+Python
+
+Run
+
+```
 import requests
 
 api_key = "YOUR_API_KEY"
@@ -1035,7 +1069,11 @@ if data["status"] == "ok":
         print("•", news["title"])
 else:
     print("No news found.")
-Example Output
+```
+
+### Example Output
+
+```
 Enter News Topic: AI
 
 📰 Top News for AI
@@ -1045,108 +1083,113 @@ Enter News Topic: AI
 • New robotics breakthrough.
 • AI tools help developers.
 • Future of Artificial Intelligence.
-What I Learned
+```
 
-Fetched live news using NewsAPI.
+### What I Learned
 
-Used for loops to print multiple headlines.
+* Fetched live news using NewsAPI.
 
-Accessed list and dictionary data from JSON.
+* Used `for` loops to print multiple headlines.
 
-🧠 Concepts Practiced
+* Accessed list and dictionary data from JSON.
 
+# 🧠 Concepts Practiced
+
+|
 Concept
 
-	
+|
 
 Used In
 
+|
+| --- | --- |
+|
 
+`requests` Library
 
-
-requests Library
-
-	
+|
 
 Weather, Movie, News Apps
 
-
-
+|
+|
 
 API Keys
 
-	
+|
 
 All three projects
 
+|
+|
 
+JSON (`.json()`)
 
-
-JSON (.json())
-
-	
+|
 
 Reading API responses
 
+|
+|
 
+`input()`
 
-
-input()
-
-	
+|
 
 User enters city, movie, or topic
 
+|
+|
 
+`if-else`
 
-
-if-else
-
-	
+|
 
 Error handling
 
+|
+|
 
+`for` Loop
 
-
-for Loop
-
-	
+|
 
 Displaying news headlines
 
-✅ Day 8 Summary
+|
+
+# ✅ Day 8 Summary
 
 Today I practiced:
 
-Working with REST APIs in Python.
+* Working with REST APIs in Python.
 
-Using the requests library.
+* Using the `requests` library.
 
-Reading JSON data from APIs.
+* Reading JSON data from APIs.
 
-Building three API-based Python applications:
+* Building three API-based Python applications:
 
-🌦️ Weather App
+  * 🌦️ Weather App
 
-🎬 Movie Finder App
+  * 🎬 Movie Finder App
 
-📰 News Headlines App
+  * 📰 News Headlines App
 
-📂 Files Used
+## 📂 Files Used
 
-AI_python_foundations/weather.py
+* `AI_python_foundations/weather.py`
 
-AI_python_foundations/Movie Finder.py
+* `AI_python_foundations/Movie Finder.py`
 
-AI_python_foundations/News Headlines App.py
+* `AI_python_foundations/News Headlines App.py`
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Vanamala Jayasurya
 
 Day 8 Completed. 🚀
 
-This matches the format of your existing README (Day 1–Day 4), so you can paste it directly underneath Day 4 in GitHub.
 
 
