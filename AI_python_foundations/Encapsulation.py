@@ -13,7 +13,7 @@ class bank:
     def addmoney(self, balance):
         self.__balance__ = balance
 
-
+bankaccount = bank("2000")
 bankaccount.show_balance()
 bankaccount.deposit(500)
 bankaccount.addmoney(2500)

@@ -18,4 +18,3 @@ print(type(is_student))
 
 grade = "A"
 print(type(grade))
-

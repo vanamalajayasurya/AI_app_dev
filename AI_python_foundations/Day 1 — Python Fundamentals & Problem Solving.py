@@ -1,5 +1,4 @@
 # First Non-Repeating Character – Code Explanation
-
 def non_repeating_character(S):
     n = len(S)
      
@@ -31,6 +30,9 @@ print("Enter a string:")
 S = input()
 
 print("The first non-repeating character is:", non_repeating_character(S))
+
+
+
 
 
 
