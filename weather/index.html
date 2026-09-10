@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmosphere Weather</title>
+    <!-- Link the CSS rules provided in your styles file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Sky background canvas layer handled by CSS palettes -->
+    <div class="scene">
+        <div class="sky-layer"></div>
+    </div>
+
+    <div class="app">
+        <!-- Search bar input interface -->
+        <div class="search">
+            <input type="text" id="cityInput" placeholder="Enter city name..." autocomplete="off">
+            <button id="searchBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </div>
+
+        <!-- Dynamic status indicator messages -->
+        <div class="status" id="statusMessage" style="display: none;">Searching for city...</div>
+
+        <!-- Principal weather stats content panel (Hidden by default until a city is queried) -->
+        <div class="weather" id="weatherPanel" style="display: none;">
+            <div class="place">
+                <h1 id="cityName">—</h1>
+                <p id="countryName">—</p>
+            </div>
+
+            <div class="headline">
+                <div class="temp" id="temperature">—</div>
+                <div class="unit">°C</div>
+            </div>
+
+            <div class="condition" id="conditionSummary">—</div>
+            <div class="description" id="conditionDesc">—</div>
+
+            <div class="details">
+                <div class="detail">
+                    <span class="detail-label">Humidity</span>
+                    <span class="detail-value" id="humidityVal">—</span>
+                </div>
+                <div class="detail">
+                    <span class="detail-label">Wind</span>
+                    <span class="detail-value" id="windVal">—</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript glue code connecting your layout to Flask backend APIs -->
+    <script>
+        const cityInput = document.getElementById('cityInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const weatherPanel = document.getElementById('weatherPanel');
+
+        // Document node assignments mapping to structural elements 
+        const cityName = document.getElementById('cityName');
+        const countryName = document.getElementById('countryName');
+        const temperature = document.getElementById('temperature');
+        const conditionSummary = document.getElementById('conditionSummary');
+        const conditionDesc = document.getElementById('conditionDesc');
+        const humidityVal = document.getElementById('humidityVal');
+        const windVal = document.getElementById('windVal');
+
+        // Mapping OpenWeather API conditions to the specialized CSS theme hooks
+        function updateBackgroundTheme(condition) {
+            document.body.className = ''; // Wipe pre-existing theme classes
+            const lowerCond = condition.toLowerCase();
+
+            if (lowerCond.includes('clear')) {
+                // Approximate daylight logic based on typical operating hours
+                const hour = new Date().getHours();
+                if (hour > 6 && hour < 18) {
+                    document.body.classList.add('sky-clear-day');
+                } else {
+                    document.body.classList.add('sky-clear-night');
+                }
+            } else if (lowerCond.includes('cloud')) {
+                document.body.classList.add('sky-clouds');
+            } else if (lowerCond.includes('rain') || lowerCond.includes('drizzle')) {
+                document.body.classList.add('sky-rain');
+            } else if (lowerCond.includes('thunder')) {
+                document.body.classList.add('sky-thunder');
+            } else if (lowerCond.includes('snow')) {
+                document.body.classList.add('sky-snow');
+            } else {
+                document.body.classList.add('sky-mist'); // Default fallback for Mist/Fog/Haze
+            }
+        }
+
+        async function fetchWeatherData() {
+            const city = cityInput.value.trim();
+            if (!city) return;
+
+            // Interface state management changes
+            statusMessage.style.display = 'block';
+            statusMessage.textContent = 'Fetching atmosphere logs...';
+            weatherPanel.style.display = 'none';
+
+            try {
+                // Asynchronous request sent directly to your Python Flask route
+                const response = await fetch(`/weather?city=${encodeURIComponent(city)}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusMessage.style.display = 'none';
+                    
+                    // Direct population of document nodes with JSON values
+                    cityName.textContent = data.city;
+                    countryName.textContent = data.country;
+                    temperature.textContent = Math.round(data.temp);
+                    conditionSummary.textContent = data.condition;
+                    conditionDesc.textContent = data.description;
+                    humidityVal.textContent = `${data.humidity}%`;
+                    windVal.textContent = `${data.wind} m/s`;
+
+                    // Synchronize visual environment colors to the specific weather report
+                    updateBackgroundTheme(data.condition);
+                    
+                    weatherPanel.style.display = 'block';
+                } else {
+                    statusMessage.textContent = `Error: ${data.message || 'Unable to pull metrics'}`;
+                }
+            } catch (error) {
+                statusMessage.textContent = 'Server connection pipeline failed.';
+                console.error(error);
+            }
+        }
+
+        // Event hooks linking components to processing steps
+        searchBtn.addEventListener('click', fetchWeatherData);
+        cityInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') fetchWeatherData();
+        });
+    </script>
+</body>
+</html>

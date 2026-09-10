@@ -1,0 +1,194 @@
+:root {
+  --ink: #0d1420;
+  --ink-soft: rgba(13, 20, 32, 0.62);
+  --paper: #f6f4ef;
+  --paper-soft: rgba(246, 244, 239, 0.72);
+  --paper-faint: rgba(246, 244, 239, 0.4);
+  --line: rgba(246, 244, 239, 0.22);
+
+  --sky-a: #6fb8e6;
+  --sky-b: #2e6da8;
+  --sky-c: #16345c;
+
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--paper);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 1.1s ease;
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--sky-a) 0%, var(--sky-b) 55%, var(--sky-c) 100%);
+  transition: background 1.1s ease;
+}
+
+/* --- condition palettes --- */
+body.sky-clear-day    { --sky-a: #6fb8e6; --sky-b: #2e6da8; --sky-c: #123458; }
+body.sky-clear-night  { --sky-a: #1b2a4a; --sky-b: #0e1830; --sky-c: #05080f; }
+body.sky-clouds       { --sky-a: #92a3b3; --sky-b: #58697c; --sky-c: #2c3641; }
+body.sky-rain         { --sky-a: #5c6f80; --sky-b: #384a5c; --sky-c: #161f28; }
+body.sky-thunder      { --sky-a: #454a58; --sky-b: #262a35; --sky-c: #0c0d12; }
+body.sky-snow         { --sky-a: #c9d6e0; --sky-b: #8fa3b3; --sky-c: #4c5c6b; }
+body.sky-mist         { --sky-a: #a9b3ad; --sky-b: #77837e; --sky-c: #3f4844; }
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8vh 1.5rem 4rem;
+}
+
+/* --- search --- */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: min(360px, 100%);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.6rem;
+}
+
+.search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--paper);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.search input::placeholder {
+  color: var(--paper-faint);
+}
+
+.search button {
+  background: none;
+  border: none;
+  color: var(--paper-soft);
+  cursor: pointer;
+  display: flex;
+  padding: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.search button:hover,
+.search button:focus-visible {
+  color: var(--paper);
+}
+
+/* --- status --- */
+.status {
+  margin-top: 3rem;
+  color: var(--paper-soft);
+  font-size: 0.95rem;
+}
+
+/* --- weather panel --- */
+.weather {
+  margin-top: 4.5rem;
+  width: min(420px, 100%);
+  text-align: left;
+}
+
+.place h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0 0 0.15rem;
+  letter-spacing: -0.01em;
+}
+
+.place p {
+  margin: 0;
+  color: var(--paper-soft);
+  font-size: 0.9rem;
+}
+
+.headline {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 2rem;
+  line-height: 1;
+}
+
+.temp {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: clamp(5rem, 22vw, 8rem);
+  letter-spacing: -0.03em;
+}
+
+.unit {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin-top: 0.9rem;
+  margin-left: 0.2rem;
+  color: var(--paper-soft);
+}
+
+.condition {
+  margin: 0.6rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.description {
+  margin: 0.2rem 0 0;
+  color: var(--paper-soft);
+  font-size: 0.95rem;
+  text-transform: capitalize;
+}
+
+.details {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.detail-label {
+  font-size: 0.78rem;
+  color: var(--paper-faint);
+}
+
+.detail-value {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, .sky-layer { transition: none; }
+}
