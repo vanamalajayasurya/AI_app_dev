@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box Office — Movie Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="film-strip"></div>
+
+<main>
+  <div class="marquee">
+    <div class="bulbs" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <h1>BOX OFFICE</h1>
+    <p>Type a title. We'll pull the ticket.</p>
+  </div>
+
+  <div class="box-office">
+    <div class="kicker">WINDOW 1 — REQUESTS</div>
+    <form id="search-form">
+      <div class="field">
+        <label for="movie-input">Which film tonight?</label>
+        <input type="text" id="movie-input" name="movie" placeholder="e.g. Inception" autocomplete="off" required>
+      </div>
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+  </div>
+
+  <div id="result-area"></div>
+</main>
+
+<footer>Details pulled live from OMDb.</footer>
+
+<div class="film-strip"></div>
+
+<script>
+  const form = document.getElementById("search-form");
+  const input = document.getElementById("movie-input");
+  const button = document.getElementById("search-btn");
+  const status = document.getElementById("status");
+  const resultArea = document.getElementById("result-area");
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, c => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[c]));
+  }
+
+  function renderTicket(data){
+    const posterHtml = (data.Poster && data.Poster !== "N/A")
+      ? `<div class="poster" style="background-image:url('${escapeHtml(data.Poster)}')" role="img" aria-label="${escapeHtml(data.Title)} poster"></div>`
+      : "";
+
+    resultArea.innerHTML = `
+      <div class="ticket">
+        <div class="stub"><span>ADMIT ONE</span></div>
+        <div class="perforation"></div>
+        <div class="details">
+          <h2>${escapeHtml(data.Title)}</h2>
+          <div class="row">
+            <div class="item">
+              <span class="label">YEAR</span>
+              <span class="value">${escapeHtml(data.Year)}</span>
+            </div>
+            <div class="item">
+              <span class="label">IMDB RATING</span>
+              <span class="value">${escapeHtml(data.imdbRating)}</span>
+            </div>
+          </div>
+        </div>
+        ${posterHtml}
+      </div>
+    `;
+  }
+
+  function renderNotFound(){
+    resultArea.innerHTML = `
+      <div class="rejected">
+        <div class="stamp">NOT FOUND</div>
+        <p>No film matches that title at this window. Try another one.</p>
+      </div>
+    `;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const movieName = input.value.trim();
+    if(!movieName) return;
+
+    button.disabled = true;
+    status.textContent = "Pulling your ticket…";
+    resultArea.innerHTML = "";
+
+    try{
+      const url = `/api/movie?title=${encodeURIComponent(movieName)}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if(data.Response === "True"){
+        status.textContent = "";
+        renderTicket(data);
+      } else {
+        status.textContent = "";
+        renderNotFound();
+      }
+    } catch(err){
+      status.textContent = "The window is closed right now — check your connection and try again.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
